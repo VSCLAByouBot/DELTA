@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\delta">
+      <UniqueIdentifier>{d9a4b38f-26a1-4248-910f-8e170749a115}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\delta">
+      <UniqueIdentifier>{c9d415c0-0c38-4aeb-8938-e068365cf907}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main_Gen_PTP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\src\delta\Protection.cpp">
+      <Filter>Source Files\delta</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\src\delta\PTP.cpp">
+      <Filter>Source Files\delta</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\src\Safety_IO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\src\SaveData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Sources\include\delta\Protection.h">
+      <Filter>Header Files\delta</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\include\delta\PTP.h">
+      <Filter>Header Files\delta</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\include\delta\Setting.h">
+      <Filter>Header Files\delta</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\include\box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\include\error_handle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\include\keyboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\include\Safety_IO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\include\SaveData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

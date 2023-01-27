@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\delta">
+      <UniqueIdentifier>{0cdf9f09-9264-4bb6-a2d5-d0fb422c708f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\delta">
+      <UniqueIdentifier>{1aa2a0ab-6833-4f66-9a2f-06bca5072a5a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Sources\include\delta\IMCDefine.h">
+      <Filter>Header Files\delta</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\include\delta\IMCDriver.h">
+      <Filter>Header Files\delta</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\include\delta\MotionCard.h">
+      <Filter>Header Files\delta</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\include\delta\Setting.h">
+      <Filter>Header Files\delta</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\include\box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\include\clock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\include\error_handle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\include\keyboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Sources\src\delta\MotionCard.cpp">
+      <Filter>Source Files\delta</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\src\clock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main_ClearCmd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
