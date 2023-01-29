@@ -102,6 +102,7 @@ int MotionCard_OpenCard(bool read_abs_enc, const int rd_abs_enc_max)
 			if (counter >= rd_abs_enc_max)
 			{
 				printf("MotionCard_ABS(): Read ABS Encoder Failed, attempted %d times.\n", rd_abs_enc_max);
+				MotionCard_CloseCard(); // 關閉軸卡
 				return IMC_RD_ABS_ENC_ERR;
 			}
 			++counter;

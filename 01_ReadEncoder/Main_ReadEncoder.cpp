@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 			 "Show All Axes Position, Velocity, Acceleration(TODO: derivatives)");
 
 	//-------------------- 初始化各軸位置與速度之上下限 --------------------
-	Init_Joint_Bound(Pos_SF, Vel_SF);
+	Init_Joint_Bound(Pos_SF, Vel_SF, CHECKPOS, CHECKVEL, Unit::rad);
 
 	while (!_kbhit()) // 按任意鍵開始程式
 		;

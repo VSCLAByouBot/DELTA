@@ -21,9 +21,12 @@ enum class Unit
  * @brief 初始化各軸狀態之上下限
  * @param Pos_SF: Safety factors for each joint position
  * @param Vel_SF: Safety factors for each joint velocity
+ * @param checkPos: Position protection switch
+ * @param checkVel: Velocity protection switch
  * @param unit: Display unit
  */
 void Init_Joint_Bound(const double Pos_SF[AXIS], const double Vel_SF[AXIS],
+					  const bool checkPos, const bool checkVel,
                       const enum class Unit unit = Unit::rad);
 
 /**

@@ -1,6 +1,6 @@
 //==================== 定義輸入/輸出檔案名稱 ====================
 // 輸出檔名方法一: 自定義完整檔案路徑及名稱
-// #define MY_OUTPUT_FILENAME "src\\delta\\data\\MyData_0125.txt" // 欲使用方法二,請將此行註解
+// #define MY_OUTPUT_FILENAME "data\\MyData_0125.txt" // 欲使用方法二,請將此行註解
 
 // 輸出檔名方法二: 使用當前系統時間戳記作為檔案名稱後綴(請將方法一註解以啟用方法二)
 #define OUTPUT_PATH "data\\" 			// 定義路徑
@@ -12,7 +12,7 @@
 // #define INPUT_FILENAME "data\\PTP_test_1.0_J1.txt"	// testing sequence 3
 // #define INPUT_FILENAME "data\\PTP_test_1.0_all.txt" // testing sequence 4
 // #define INPUT_FILENAME "data\\PTP_test_2.9_J1.txt"	// testing sequence 5
-//#define INPUT_FILENAME "data\\Trajectory.txt" // testing sequence 6
+// #define INPUT_FILENAME "data\\Trajectory.txt"		// testing sequence 6
 
 //==================== Integrated Functions ====================
 #include "delta/Initialization.h"
@@ -32,8 +32,8 @@ constexpr double Vel_SF[AXIS] = {1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
 // 在編譯期間檢查安全係數的值域,若超過則編譯失敗,不會進到執行階段才檢查
 static_assert(!(CHK_SF(0) || CHK_SF(1) || CHK_SF(2) || CHK_SF(3) || CHK_SF(4) || CHK_SF(5)),
 			  "Safety Factors (Pos_SF, Vel_SF) should all be 0 ~ 1.");
-const bool CHECKPOS = true; // 選擇是否開啟位置保護功能
-const bool CHECKVEL = true; // 選擇是否開啟速度保護功能
+const bool CHECKPOS = true;	 // 選擇是否開啟位置保護功能
+const bool CHECKVEL = false; // 選擇是否開啟速度保護功能
 
 //======================= State & Counter & Flag =======================
 const int STATE_BUFFER1 = 0;
@@ -89,7 +89,8 @@ int main(int argc, char *argv[])
 			 "Follow the trajectory defined in the input file and go back to HOME.");
 
 	//-------------------- 初始化各軸位置與速度之上下限 --------------------
-	Init_Joint_Bound(Pos_SF, Vel_SF);
+	Init_Joint_Bound(Pos_SF, Vel_SF, CHECKPOS, CHECKVEL, Unit::rad);
+	puts("Input Trajectory File: \"" INPUT_FILENAME "\"");
 
 	while (!_kbhit()) // 按任意鍵開始程式
 		;
@@ -107,30 +108,6 @@ int main(int argc, char *argv[])
 	CHECK_FAIL(record.CreateSaveData(__OUTPUT, __TIMESTAMP) != 0,
 			   FILE_OPEN_ERR_MESSAGE);
 	// RobotModel_Beta("Beta.txt") ; // 載入系統參數
-
-	// ***********************************************************
-	 TimerFlag = STATE_TRACKING;
-	 while (true)
-	 {
-	 	if (TimerFlag == STATE_TRACKING)
-	 	{
-	 		track.Get_Cmd(PosCmd, VelCmd, AccCmd, EndFlag2); // 循跡命令
-	 		if (EndFlag2 == 1)
-	 		{
-	 			TimerFlag = STATE_BUFFER3;
-	 		}
-	 		if (TimerFlag == STATE_TRACKING) // 多出來的資料不用紀錄
-	 		{
-	 			record.save(PosCmd, VelCmd, AccCmd); // 儲存實驗資料
-	 		}
-	 	}
-	 	else if (TimerFlag == STATE_BUFFER3)
-	 		break;
-	 }
-	 record.CloseFile();
-	 track.CloseFile();
-	 return 0;
-	//***********************************************************
 
 	//-------------------- 開啟各項功能 --------------------
 	CHECK_FAIL(MotionCard_OpenCard() != 0, MC_ERR_MESSAGE); // 開啟軸卡,若失敗則結束程式
@@ -278,7 +255,13 @@ void _stdcall Timer_Stay(TMRINT *pstINTSource)
 		TimerFlag = STATE_PTPtoFirstPos;
 		for (int i = 0; i < AXIS; i++)
 		{
-			InitialPos[i] = Pos[i]; // 初始角度(Step1.PTP)
+			//InitialPos[i] = Pos[i]; // 初始角度(Step1.PTP) (2023/01/29以前)
+
+			/* 2023/01/29 測試結果
+			 * 由於Pos與PosCmd之間仍然存在穩態誤差,
+			 * 若瞬間改變命令(PosCmd -> Pos),可能會造成手臂瞬間震動
+			 */
+			InitialPos[i] = PosCmd[i]; // 初始角度(Step1.PTP)
 		}
 		puts("---------- 緩衝1 結束 ----------");
 	}
@@ -292,7 +275,13 @@ void _stdcall Timer_Stay(TMRINT *pstINTSource)
 		TimerFlag = STATE_PTPtoHomePos;
 		for (int i = 0; i < AXIS; i++)
 		{
-			LastPos[i] = Pos[i]; // 最末項軌跡命令(Step3.PTP)
+			//LastPos[i] = Pos[i]; // 最末項軌跡命令(Step3.PTP) (2023/01/29以前)
+
+			/* 2023/01/29 測試結果
+			 * 由於Pos與PosCmd之間仍然存在穩態誤差,
+			 * 若瞬間改變命令(PosCmd -> Pos),可能會造成手臂瞬間震動
+			 */
+			LastPos[i] = PosCmd[i]; // 最末項軌跡命令(Step3.PTP)
 		}
 		puts("---------- 緩衝3 結束 ----------");
 	}

@@ -17,7 +17,8 @@ std::array<double, AXIS> _VELMAX = {MAX_VEL_0, MAX_VEL_1, MAX_VEL_2, // 原始速度
 std::array<double, AXIS> PosMin(_POSMIN), PosMax(_POSMAX), VelMax(_VELMAX);
 
 void Init_Joint_Bound(const double Pos_SF[AXIS], const double Vel_SF[AXIS],
-						const enum class Unit unit)
+					  const bool checkPos, const bool checkVel,
+					  const enum class Unit unit)
 {
 	for (int i = 0; i < AXIS; ++i)
 	{
@@ -51,6 +52,9 @@ void Init_Joint_Bound(const double Pos_SF[AXIS], const double Vel_SF[AXIS],
 		}
 		break;
 	}
+	// 顯示保護模式狀態
+	printf("Position Protection: %s\n", checkPos ? "ON" : "OFF");
+	printf("Velocity Protection: %s\n", checkVel ? "ON" : "OFF");
 }
 
 void Protection(const double Vel[AXIS], int &SafetyFlag)

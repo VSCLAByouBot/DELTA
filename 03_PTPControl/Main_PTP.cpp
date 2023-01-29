@@ -41,10 +41,10 @@ int EndFlag2 = 0;			   // 命令結束旗標2
 int StayCount = 0;			   // 緩衝用計數
 
 //===============================================================
-double HomePos[AXIS] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};	  // HOME點 [rad]
-double InitialPos[AXIS];								  // 初始角度 [rad]
-double TargetPos[AXIS] = {1.0, 0.5, -0.5, 0.0, 0.0, 0.0}; // 目標角度 [rad]
-// double TargetPos[AXIS] = {1.0, 1.0, -1.0, -1.0, 1.0, 1.0};	// 目標角度 [rad]
+double HomePos[AXIS] = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};	   // HOME點 [rad]
+double InitialPos[AXIS];								   // 初始角度 [rad]
+double TargetPos[AXIS] = {1.0, 1.0, -1.0, -1.0, 1.0, 1.0}; // 目標角度 [rad]
+ // double TargetPos[AXIS] = {1.0, 0.5, -0.5, 0.0, 0.0, 0.0}; // 目標角度 [rad]
 
 double Pos[AXIS] = {0.0};	  // 編碼器角度 [rad]
 double Vel[AXIS] = {0.0};	  // LSF速度 [rad/s]
@@ -75,7 +75,15 @@ int main(int argc, char *argv[])
 			 "Specify a target EEF point to reach the goal and go back to HOME.");
 
 	//-------------------- 初始化各軸位置與速度之上下限 --------------------
-	Init_Joint_Bound(Pos_SF, Vel_SF);
+	Init_Joint_Bound(Pos_SF, Vel_SF, CHECKPOS, CHECKVEL, Unit::rad);
+
+	//-------------------- 顯示點對點運動之初始點與目標點 --------------------
+	printf("InitialPos: [%+8.5f, %+8.5f, %+8.5f, %+8.5f, %+8.5f, %+8.5f]\n",
+		   InitialPos[0], InitialPos[1], InitialPos[2],
+		   InitialPos[3], InitialPos[4], InitialPos[5]);
+	printf("TargetPos : [%+8.5f, %+8.5f, %+8.5f, %+8.5f, %+8.5f, %+8.5f]\n",
+		   TargetPos[0], TargetPos[1], TargetPos[2],
+		   TargetPos[3], TargetPos[4], TargetPos[5]);
 
 	while (!_kbhit()) // 按任意鍵開始程式
 		;

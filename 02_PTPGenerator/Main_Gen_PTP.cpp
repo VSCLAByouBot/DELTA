@@ -50,15 +50,15 @@ int main(int argc, char *argv[])
 			 "Generate a trajectory file from point to point.");
 
 	//-------------------- 初始化各軸位置與速度之上下限 --------------------
-	Init_Joint_Bound(Pos_SF, Vel_SF, Unit::rad);
+	Init_Joint_Bound(Pos_SF, Vel_SF, CHECKPOS, CHECKVEL, Unit::rad);
 
 	//-------------------- 顯示點對點運動之初始點與目標點 --------------------
-	printf("InitialPos: %+8.5f %+8.5f %+8.5f %+8.5f %+8.5f %+8.5f\n",
-				InitialPos[0], InitialPos[1], InitialPos[2],
-				InitialPos[3], InitialPos[4], InitialPos[5]);
-	printf("TargetPos : %+8.5f %+8.5f %+8.5f %+8.5f %+8.5f %+8.5f\n",
-				TargetPos[0], TargetPos[1], TargetPos[2],
-				TargetPos[3], TargetPos[4], TargetPos[5]);
+	printf("InitialPos: [%+8.5f, %+8.5f, %+8.5f, %+8.5f, %+8.5f, %+8.5f]\n",
+		   InitialPos[0], InitialPos[1], InitialPos[2],
+		   InitialPos[3], InitialPos[4], InitialPos[5]);
+	printf("TargetPos : [%+8.5f, %+8.5f, %+8.5f, %+8.5f, %+8.5f, %+8.5f]\n",
+		   TargetPos[0], TargetPos[1], TargetPos[2],
+		   TargetPos[3], TargetPos[4], TargetPos[5]);
 
 	while (!_kbhit()) // 按任意鍵開始程式
 		;
