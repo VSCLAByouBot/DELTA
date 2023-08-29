@@ -1,4 +1,5 @@
 # 台達機械手臂控制程式
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -64,3 +65,14 @@ Visual Studio 專案 (Project) 右鍵＞屬性
 * [VSCLab 共用雲端/04. 機械手臂技術文件/DELTA](https://ncku365-my.sharepoint.com/personal/e14054112_ncku_edu_tw/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fe14054112%5Fncku%5Fedu%5Ftw%2FDocuments%2F04%2E%20%E6%A9%9F%E6%A2%B0%E6%89%8B%E8%87%82%E6%8A%80%E8%A1%93%E6%96%87%E4%BB%B6%2FDELTA&view=0)
   * `基礎操作與緊急停機處置SOP.pdf`
   * `台達手臂新建專案SOP.docx`
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/VSCLAByouBot/DELTA.svg?style=for-the-badge
+[contributors-url]: https://github.com/VSCLAByouBot/DELTA/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/VSCLAByouBot/DELTA.svg?style=for-the-badge
+[forks-url]: https://github.com/VSCLAByouBot/DELTA/network/members
+[stars-shield]: https://img.shields.io/github/stars/VSCLAByouBot/DELTA.svg?style=for-the-badge
+[stars-url]: https://github.com/VSCLAByouBot/DELTA/stargazers
+[issues-shield]: https://img.shields.io/github/issues/VSCLAByouBot/DELTA.svg?style=for-the-badge
+[issues-url]: https://github.com/VSCLAByouBot/DELTA/issues
